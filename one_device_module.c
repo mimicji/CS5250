@@ -40,9 +40,12 @@ int onebyte_release(struct inode *inode, struct file *filep)
 ssize_t onebyte_read(struct file *filep, char *buf, size_t count, loff_t *f_pos)
 {
 	// TODO
-	/*please complete the function on your own*/
 	unsigned int read_counter = 0;
-	put_user(*(onebyte_data), buf);
+	if(*buf != 0) { // is buf writen?
+		return 0;	
+	}
+	copy_to_user(buf, onebyte_data, sizeof(char));
+	//put_user(*(onebyte_data), buf);
 	++read_counter;
 	return read_counter;
 }
@@ -50,9 +53,13 @@ ssize_t onebyte_read(struct file *filep, char *buf, size_t count, loff_t *f_pos)
 ssize_t onebyte_write(struct file *filep, const char *buf, size_t count, loff_t *f_pos)
 {
 	// TODO
-	/*please complete the function on your own*/
 	unsigned int write_counter = 0;
-	get_user(*(onebyte_data), buf);
+	
+	if (count > sizeof(char)) {
+		printk(KERN_ALERT "Insufficient space");
+		return -EINVAL;
+	}
+	//get_user(*(onebyte_data), buf);
 	++write_counter;
 	return write_counter;
 }
