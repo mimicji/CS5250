@@ -13,10 +13,8 @@
 /* forward declaration */
 int onebyte_open(struct inode *inode, struct file *filep);
 int onebyte_release(struct inode *inode, struct file *filep);
-	ssize_t onebyte_read(struct file *filep, char *buf, size_t
-count, loff_t *f_pos);
-ssize_t onebyte_write(struct file *filep, const char *buf,
-	size_t count, loff_t *f_pos);
+ssize_t onebyte_read(struct file *filep, char *buf, size_t count, loff_t *f_pos);
+ssize_t onebyte_write(struct file *filep, const char *buf, size_t count, loff_t *f_pos);
 static void onebyte_exit(void);
 
 /* definition of file_operation structure */
@@ -39,14 +37,12 @@ int onebyte_release(struct inode *inode, struct file *filep)
 	return 0; // always successful
 }
 
-ssize_t onebyte_read(struct file *filep, char *buf, size_t
-	count, loff_t *f_pos)
+ssize_t onebyte_read(struct file *filep, char *buf, size_t count, loff_t *f_pos)
 {
 /*please complete the function on your own*/
 }
 
-ssize_t onebyte_write(struct file *filep, const char *buf,
-	size_t count, loff_t *f_pos)
+ssize_t onebyte_write(struct file *filep, const char *buf, size_t count, loff_t *f_pos)
 {
 	/*please complete the function on your own*/
 }
