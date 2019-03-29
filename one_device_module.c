@@ -57,7 +57,7 @@ ssize_t onebyte_write(struct file *filep, const char *buf, size_t count, loff_t 
 	
 	if (count > sizeof(char)) {
 		printk(KERN_ALERT "No space left on device");
-		return -EINVAL;
+		return -ENOSPC;
 	}
 	//get_user(*(onebyte_data), buf);
 	++write_counter;
