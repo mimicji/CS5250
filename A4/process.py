@@ -13,7 +13,13 @@ class Process:
     def __repr__(self):
         return ('[id %d : arrival_time %d,  burst_time %d]'%(self.id, self.arrive_time, self.burst_time))
 
+class Process_SRTF(Process):
+    def __lt__(self, other):
+        return self.burst_time < other.burst_time or (self.burst_time == other.burst_time and self.arrive_time < other.arrive_time)
+
+
 class Process_SJF(Process):
+    pred_time = -1
     def __init__(self, id, arrive_time, burst_time):
         self.id = id
         self.arrive_time = arrive_time
