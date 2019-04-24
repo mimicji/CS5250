@@ -1,47 +1,46 @@
-def get_task(tasks):
-    tasks_after = []
-    next = tasks[0]
-    if len(tasks) >= 2:
-        tasks_after = tasks[1:]
-    return (next, tasks_after)
+import Queue
 
-def run_task(process, current_time, time_quantum, tasks, last_preempt_time):
-    if process.burst_time <= time_quantum:
-        current_time += process.burst_time
-    else:
-        current_time += time_quantum
-        process.burst_time -= time_quantum
-        tasks.append(process)
-    last_preempt_time[process.id] = current_time
-    return (current_time, tasks, last_preempt_time)
+def update_queue(current_time, tasks, queue):
+    # This ugly implementation is to solve the problem raised below
+    new_queue = Queue.Queue()
+    while tasks and tasks[0].arrive_time <= current_time:
+        new_queue.put(tasks[0])
+        tasks = tasks[1:]
+    while not queue.empty():
+        new_queue.put(queue.get())
+    return tasks, new_queue
 
-def RR_scheduling(process_list, time_quantum):
+def RR_scheduling(tasks, time_quantum):
     result_schedule = []
-    tasks = []
-    last_preempt_time = dict()
-    process_list_len = len(process_list)
-
+    process_list_len = len(tasks)
+    queue = Queue.Queue()
     current_time = 0
     waiting_time = 0
+    current_process = -1
+    previous_process = -1
+    for process in tasks:
+        waiting_time -= process.burst_time
+    while not queue.empty() or tasks:
+        tasks, queue = update_queue(current_time, tasks, queue)
+        if queue.empty():
+            current_time = tasks[0].arrive_time
+            continue
+        current_process = queue.get()
+        if previous_process != current_process:
+            result_schedule.append((current_time, current_process.id))
+        if current_process.burst_time > time_quantum:
+            current_process.burst_time -= time_quantum
+            current_time += time_quantum
+            # There is a problem here:
+            #   If a new process arrives,
+            #   it should have a priority to all existing processes or not?
+            #   In this version, the answer is 'yes'.
+            tasks, queue = update_queue(current_time, tasks, queue)
+            queue.put(current_process)
 
-    while len(tasks) or len(process_list):
-        if len(tasks):
-            (process, tasks) = get_task(tasks)
-            waiting_time += current_time - last_preempt_time[process.id]
-            result_schedule.append((current_time, process.id))
-            (current_time, tasks, last_preempt_time)=run_task(process, current_time, time_quantum, tasks, last_preempt_time)
         else:
-            current_time = process_list[0].arrive_time
-        if len(process_list):
-            new_incoming_tasks = []
-            not_arrived_tasks = []
-            for process in process_list:
-                if process.arrive_time <= current_time:
-                    new_incoming_tasks.append(process)
-                else:
-                    not_arrived_tasks.append(process)
-            process_list = not_arrived_tasks
-            tasks = new_incoming_tasks + tasks
-            for process in new_incoming_tasks:
-                last_preempt_time[process.id] = process.arrive_time
-    return result_schedule, float(waiting_time)/float(process_list_len)
+            current_time += current_process.burst_time
+            waiting_time += current_time - current_process.arrive_time
+        previous_process = current_process
+    average_waiting_time = waiting_time/float(process_list_len)
+    return result_schedule, average_waiting_time

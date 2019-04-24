@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="74758e39-9265-47cc-a180-0630069e5456" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sjf.py" beforeDir="false" afterPath="$PROJECT_DIR$/sjf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RR.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RR.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rr.py" beforeDir="false" afterPath="$PROJECT_DIR$/rr.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sjf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+            <state relative-caret-position="90">
+              <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -51,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srtf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="12" selection-end-column="25" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -60,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="33" column="24" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="24" />
+            <state relative-caret-position="135">
+              <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -103,11 +102,11 @@
       <list>
         <option value="$PROJECT_DIR$/fcfs.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/rr.py" />
         <option value="$PROJECT_DIR$/simulator.py" />
         <option value="$PROJECT_DIR$/process.py" />
         <option value="$PROJECT_DIR$/srtf.py" />
         <option value="$PROJECT_DIR$/sjf.py" />
+        <option value="$PROJECT_DIR$/rr.py" />
       </list>
     </option>
   </component>
@@ -226,13 +225,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="33" column="24" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simulator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
@@ -250,23 +242,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srtf.py">
+    <entry file="file://$PROJECT_DIR$/sjf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="90">
+          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sjf.py">
+    <entry file="file://$PROJECT_DIR$/srtf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="12" selection-end-column="25" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
         </state>
       </provider>
     </entry>
