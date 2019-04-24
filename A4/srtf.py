@@ -6,7 +6,7 @@ def SRTF_scheduling(process_list):
     waiting_time = 0
     for process in process_list:
         tasks.append(Process_SRTF(process.id, process.arrive_time, process.burst_time))
-        waiting_time -= process.burst_time
+        waiting_time -= process.burst_time + process.arrive_time
     current_time = 0
     result_schedule = []
     current_process = -1
@@ -28,8 +28,7 @@ def SRTF_scheduling(process_list):
             queue.put(current_process)
         else:
             current_time += current_process.burst_time
-            waiting_time += current_time - current_process.arrive_time
+            waiting_time += current_time
         previous_process = current_process
-
     average_waiting_time = waiting_time/float(len(process_list))
     return result_schedule, average_waiting_time

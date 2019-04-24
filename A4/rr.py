@@ -19,7 +19,7 @@ def RR_scheduling(tasks, time_quantum):
     current_process = -1
     previous_process = -1
     for process in tasks:
-        waiting_time -= process.burst_time
+        waiting_time -= process.burst_time + process.arrive_time
     while not queue.empty() or tasks:
         tasks, queue = update_queue(current_time, tasks, queue)
         if queue.empty():
@@ -37,10 +37,9 @@ def RR_scheduling(tasks, time_quantum):
             #   In this version, the answer is 'yes'.
             tasks, queue = update_queue(current_time, tasks, queue)
             queue.put(current_process)
-
         else:
             current_time += current_process.burst_time
-            waiting_time += current_time - current_process.arrive_time
+            waiting_time += current_time
         previous_process = current_process
     average_waiting_time = waiting_time/float(process_list_len)
     return result_schedule, average_waiting_time

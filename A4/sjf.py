@@ -3,14 +3,14 @@ from process import Process_SJF
 
 def SJF_scheduling(process_list, alpha=0.5, init_time = 5):
     tasks = []
+    waiting_time = 0
     for process in process_list:
         tasks.append(Process_SJF(process.id, process.arrive_time, process.burst_time))
+        waiting_time -= process.arrive_time
     result_schedule = []
     queue = PriorityQueue()
     current_time = 0
-    waiting_time = 0
     pred_history = {}
-
     while not queue.empty() or tasks:
         while (tasks) and (tasks[0].arrive_time <= current_time):
             process = tasks[0]
@@ -29,9 +29,8 @@ def SJF_scheduling(process_list, alpha=0.5, init_time = 5):
         current_process = queue.get()
         if (not result_schedule or current_process != previous_process):
             result_schedule.append((current_time, current_process.id))
-        waiting_time = waiting_time + (current_time - current_process.arrive_time)
+        waiting_time += current_time
         current_time += current_process.burst_time
         previous_process = current_process
-
     average_waiting_time = waiting_time / float(len(process_list))
     return result_schedule, average_waiting_time
